@@ -13,5 +13,114 @@
         // 确保重定向执行
         window.location.href = 'dashboard.html';
     </script>
+
+    <!-- 智能助手悬浮入口 -->
+    <div class="smart-assistant">
+        <!-- 入口按钮 -->
+        <button id="assistantBtn" class="assistant-btn">
+            <span class="assistant-icon">💬</span>
+            <span class="assistant-text">智能助手</span>
+        </button>
+        
+        <!-- 功能选择浮层 -->
+        <div id="functionLayer" class="function-layer">
+            <button class="function-item" data-action="chat">
+                <span class="function-icon">💬</span>
+                <span>智能问答</span>
+            </button>
+            <button class="function-item" data-action="quick">
+                <span class="function-icon">⚡</span>
+                <span>常用功能</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 对话页面 -->
+    <div id="chatPage" class="chat-page">
+        <!-- 左侧：会话列表 -->
+        <div class="chat-left">
+            <div class="chat-left-header">
+                <div class="header-left">
+                    <h3>智能助手</h3>
+                </div>
+                <div class="header-right">
+                    <button class="chat-minimize-btn" onclick="minimizeChat()">
+                        <span>—</span>
+                    </button>
+                    <button class="chat-close-btn" onclick="closeChat()">
+                        <span>×</span>
+                    </button>
+                </div>
+            </div>
+            <div class="chat-list">
+                <div class="chat-item active">
+                    <span class="chat-icon">💬</span>
+                    <div class="chat-info">
+                        <div class="chat-title">智能问答</div>
+                        <div class="chat-last-message">你好，有什么可以帮助你的吗？</div>
+                    </div>
+                    <div class="chat-time">10:30</div>
+                </div>
+            </div>
+        </div>
+        <!-- 中间：对话窗口 -->
+        <div class="chat-middle">
+            <div class="chat-middle-header">
+                <div class="header-left">
+                    <h3>智能问答</h3>
+                    <span class="online-status">在线</span>
+                </div>
+                <div class="header-right">
+                    <button class="chat-fullscreen-btn">
+                        <span>□</span>
+                    </button>
+                    <button class="chat-settings-btn">
+                        <span>⚙️</span>
+                    </button>
+                </div>
+            </div>
+            <div class="chat-messages">
+                <div class="message assistant-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <div class="message-text">你好，我是知风智能助手，有什么可以帮助你的吗？</div>
+                        <div class="message-time">10:30</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <div class="input-container">
+                    <input type="text" id="messageInput" placeholder="请输入您的问题..." class="message-input">
+                    <button class="send-btn" onclick="sendMessage()">
+                        <span>发送</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧：关联工具 -->
+        <div class="chat-right">
+            <div class="chat-right-header">
+                <h3>关联工具</h3>
+            </div>
+            <div class="tool-list">
+                <div class="tool-item">
+                    <span class="tool-icon">📊</span>
+                    <span class="tool-name">数据分析</span>
+                </div>
+                <div class="tool-item">
+                    <span class="tool-icon">📝</span>
+                    <span class="tool-name">内容生成</span>
+                </div>
+                <div class="tool-item">
+                    <span class="tool-icon">🔍</span>
+                    <span class="tool-name">市场调研</span>
+                </div>
+                <div class="tool-item">
+                    <span class="tool-icon">💡</span>
+                    <span class="tool-name">创意启发</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

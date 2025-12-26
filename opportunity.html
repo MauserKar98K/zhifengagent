@@ -134,6 +134,173 @@
     
 
     
+    <!-- 智能助手悬浮入口 -->
+    <div class="smart-assistant">
+        <!-- 入口按钮 -->
+        <button id="assistantBtn" class="assistant-btn">
+            <span class="assistant-icon">💬</span>
+            <span class="assistant-text">智能助手</span>
+        </button>
+        
+        <!-- 功能选择浮层 -->
+        <div id="functionLayer" class="function-layer">
+            <button class="function-item" data-action="chat">
+                <span class="function-icon">💬</span>
+                <span>智能问答</span>
+            </button>
+            <button class="function-item" data-action="quick">
+                <span class="function-icon">⚡</span>
+                <span>常用功能</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 对话页面 -->
+    <div id="chatPage" class="chat-page">
+        <!-- 左侧：会话列表 -->
+        <div class="chat-left">
+            <div class="left-header">
+                <input type="text" class="session-search" placeholder="搜索会话...">
+            </div>
+            <div class="session-list">
+                <div class="session-item active">
+                    <div class="session-info">
+                        <div class="session-title">今日情报查询</div>
+                        <div class="session-preview">大连港本周有哪些政策变动？</div>
+                    </div>
+                    <div class="session-time">10:30</div>
+                    <div class="unread-count">3</div>
+                </div>
+                <div class="session-item">
+                    <div class="session-info">
+                        <div class="session-title">客户信息查询</div>
+                        <div class="session-preview">张三的客户画像在哪里查看？</div>
+                    </div>
+                    <div class="session-time">09:15</div>
+                </div>
+                <div class="session-item">
+                    <div class="session-info">
+                        <div class="session-title">功能导航</div>
+                        <div class="session-preview">如何生成客户营销方案？</div>
+                    </div>
+                    <div class="session-time">昨天</div>
+                    <div class="unread-count">1</div>
+                </div>
+                <div class="session-item">
+                    <div class="session-info">
+                        <div class="session-title">港口情报</div>
+                        <div class="session-preview">上海港近期拥堵情况如何？</div>
+                    </div>
+                    <div class="session-time">昨天</div>
+                </div>
+                <div class="session-item">
+                    <div class="session-info">
+                        <div class="session-title">航线查询</div>
+                        <div class="session-preview">大连到新加坡的航线有哪些？</div>
+                    </div>
+                    <div class="session-time">12-16</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中间：对话窗口 -->
+        <div class="chat-middle">
+            <div class="middle-header">
+                <h2 class="chat-title">今日情报查询</h2>
+                <div class="header-buttons">
+                    <button class="header-btn minimize-btn">−</button>
+                </div>
+            </div>
+            
+            <div class="quick-buttons">
+                <button class="quick-btn">查大连港政策</button>
+                <button class="quick-btn">查看客户画像</button>
+                <button class="quick-btn">今日港口情报</button>
+                <button class="quick-btn">生成营销方案</button>
+            </div>
+            
+            <div id="chatContent" class="chat-content">
+                <div class="message assistant">
+                    <div class="message-bubble">
+                        <div class="message-title">知风智能助手</div>
+                        <p>您好！我是知风智能助手，请问有什么可以帮助您的？</p>
+                    </div>
+                </div>
+                <div class="message user">
+                    <div class="message-bubble">
+                        <p>大连港本周有哪些政策变动？</p>
+                    </div>
+                </div>
+                <div class="message assistant">
+                    <div class="message-bubble">
+                        <div class="message-title">大连港本周政策变动</div>
+                        <p>1. 港口作业时间延长至24小时，提高货物周转效率</p>
+                        <p>2. 新增外贸货物专用通道，加快通关速度</p>
+                        <p>3. 实施绿色港口政策，对环保型船舶给予优先靠泊权</p>
+                    </div>
+                </div>
+                <div class="message user">
+                    <div class="message-bubble">
+                        <p>这些政策对我们的业务有什么影响？</p>
+                    </div>
+                </div>
+                <div class="message assistant">
+                    <div class="message-bubble">
+                        <div class="message-title">政策影响分析</div>
+                        <p>1. 24小时作业时间将提高您的货物周转效率，减少等待时间</p>
+                        <p>2. 外贸专用通道可使您的通关时间缩短约30%</p>
+                        <p>3. 如您的船舶符合环保标准，可享受优先靠泊权，进一步提高运营效率</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <div class="input-wrapper">
+                    <button class="input-btn attachment-btn">📎</button>
+                    <input type="text" id="chatInput" class="chat-input" placeholder="请输入您的问题...">
+                    <button id="sendBtn" class="input-btn">📤</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧：关联工具 -->
+        <div class="chat-right">
+            <div class="right-header">
+                <h3>关联工具</h3>
+            </div>
+            <div class="right-content">
+                <div class="tool-card">
+                    <div class="card-title">客户信息卡片</div>
+                    <div class="card-content">
+                        <p><strong>客户名称：</strong>大连港集团有限公司</p>
+                        <p><strong>客户类型：</strong>港口运营商</p>
+                        <p><strong>合作时长：</strong>3年</p>
+                        <p><strong>最近互动：</strong>2025-12-15</p>
+                    </div>
+                    <button class="card-btn">查看完整客户画像</button>
+                </div>
+                <div class="tool-card">
+                    <div class="card-title">情报检索结果</div>
+                    <div class="card-content">
+                        <p><strong>标题：</strong>大连港2025年Q4政策调整公告</p>
+                        <p><strong>来源：</strong>大连港官网</p>
+                        <p><strong>发布时间：</strong>2025-12-10</p>
+                    </div>
+                    <button class="card-btn">查看完整情报</button>
+                </div>
+                <div class="tool-card">
+                    <div class="card-title">航线推荐</div>
+                    <div class="card-content">
+                        <p><strong>推荐航线：</strong>大连-上海-新加坡</p>
+                        <p><strong>航行时间：</strong>12天</p>
+                        <p><strong>班期：</strong>每周3班</p>
+                    </div>
+                    <button class="card-btn">查看详细航线</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
