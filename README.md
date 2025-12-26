@@ -4,50 +4,11 @@
 
 以下是在国内不需要VPN即可访问的静态网站部署方案：
 
-### 方案一：Gitee Pages（推荐）
-Gitee Pages是码云提供的免费静态网站托管服务，国内访问速度快，操作流程与GitHub Pages类似。
+### 注意：Gitee Pages 已下线
+根据Gitee官方文档，Gitee Pages功能已正式下线，无法继续使用。请选择以下其他国内可用的部署方案。
 
-#### 部署步骤：
-1. **注册并登录Gitee**
-   - 访问 https://gitee.com/ 注册账号并登录
-
-2. **创建仓库**
-   - 点击右上角"+"号，选择"新建仓库"
-   - 填写仓库信息：
-     - 仓库名称：建议使用英文（如 `competitor-monitoring`）
-     - 仓库介绍：竞争对手监测系统
-     - 选择"公开"仓库
-     - 点击"创建"
-
-3. **配置本地Git仓库**
-   ```bash
-   # 设置Gitee用户名和邮箱
-   git config --global user.name "你的Gitee用户名"
-   git config --global user.email "你的Gitee邮箱"
-   
-   # 添加Gitee远程仓库
-   git remote add gitee https://gitee.com/你的用户名/competitor-monitoring.git
-   
-   # 推送代码到Gitee
-   git push -u gitee main
-   ```
-
-4. **启用Gitee Pages**
-   - **方法一（推荐）：直接访问配置URL**
-     - 在浏览器中输入：`https://gitee.com/mauserkar98k/zhifeng/pages`
-     - 这将直接打开您仓库的Gitee Pages配置页面
-   - **方法二：通过菜单访问**
-     - 进入Gitee仓库页面
-     - 点击"服务" → "Gitee Pages"
-     - 如果在"服务"菜单中找不到，可以尝试点击"管理" → 查看是否有"Pages服务"
-   - **配置选项**：
-     - 选择分支：`master`（注意：您的远程分支是master，不是main）
-     - 选择目录：`/(根目录)`
-   - 点击"启动"
-   - 等待部署完成，获取访问URL（如：`https://mauserkar98k.gitee.io/zhifeng/`）
-
-### 方案二：阿里云OSS静态网站托管
-阿里云OSS（对象存储服务）提供静态网站托管功能，访问速度快，可靠性高。
+### 方案一：阿里云OSS静态网站托管（推荐）
+阿里云OSS（对象存储服务）提供静态网站托管功能，国内访问速度快，可靠性高。
 
 #### 部署步骤：
 1. **注册并登录阿里云**
