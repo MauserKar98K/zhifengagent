@@ -49,7 +49,191 @@ window.addEventListener('DOMContentLoaded', function() {
     } else if (path.includes('opportunity-detail.html')) {
         initOpportunityDetailPage();
     }
+    
+    // 初始化智能助手
+    initSmartAssistant();
 });
+
+// 智能助手初始化函数
+function initSmartAssistant() {
+    console.log('智能助手初始化函数被调用');
+    // 元素获取
+    const assistantBtn = document.getElementById('assistantBtn');
+    const functionLayer = document.getElementById('functionLayer');
+    const chatPage = document.getElementById('chatPage');
+    const sendBtn = document.getElementById('sendBtn');
+    const chatInput = document.getElementById('chatInput');
+    const chatContent = document.getElementById('chatContent');
+    const minimizeBtn = document.querySelector('.minimize-btn');
+    const sessionItems = document.querySelectorAll('.session-item');
+    const quickBtns = document.querySelectorAll('.quick-btn');
+    const functionItems = document.querySelectorAll('.function-item');
+    
+    console.log('assistantBtn:', assistantBtn);
+    console.log('functionLayer:', functionLayer);
+    console.log('chatPage:', chatPage);
+    
+    // 状态管理
+    let isLayerOpen = false;
+    let isChatOpen = false;
+    
+    // 如果元素不存在，说明当前页面没有智能助手，直接返回
+    if (!assistantBtn) {
+        console.log('智能助手元素不存在');
+        return;
+    }
+    
+    // 悬浮入口点击事件
+    assistantBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleFunctionLayer();
+    });
+    
+    // 显示/隐藏功能浮层
+    function toggleFunctionLayer() {
+        isLayerOpen = !isLayerOpen;
+        functionLayer.classList.toggle('show', isLayerOpen);
+    }
+    
+    // 点击页面其他地方关闭功能浮层
+    document.addEventListener('click', function(e) {
+        if (!assistantBtn.contains(e.target) && !functionLayer.contains(e.target)) {
+            isLayerOpen = false;
+            functionLayer.classList.remove('show');
+        }
+        
+        // 点击页面其他地方关闭聊天窗口（保留聊天记录）
+        if (isChatOpen && !chatPage.contains(e.target) && !assistantBtn.contains(e.target)) {
+            minimizeChatPage();
+        }
+    });
+    
+    // 功能选择项点击事件
+    functionItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const action = this.dataset.action;
+            
+            if (action === 'chat') {
+                openChatPage();
+            } else if (action === 'quick') {
+                showQuickFunctions();
+            }
+            
+            // 关闭功能浮层
+            isLayerOpen = false;
+            functionLayer.classList.remove('show');
+        });
+    });
+    
+    // 打开对话页面
+    function openChatPage() {
+        isChatOpen = true;
+        chatPage.classList.add('show');
+        // 滚动到底部
+        setTimeout(() => {
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }, 300);
+    }
+    
+    // 收起对话页面
+    function minimizeChatPage() {
+        isChatOpen = false;
+        chatPage.classList.remove('show');
+    }
+    
+    // 显示常用功能
+    function showQuickFunctions() {
+        // 这里可以实现常用功能的显示逻辑
+        alert('常用功能：客户洞察卡、情报快报等将在此处显示');
+    }
+    
+    // 收起按钮点击事件
+    if (minimizeBtn) {
+        minimizeBtn.addEventListener('click', function() {
+            minimizeChatPage();
+        });
+    }
+    
+    // 发送消息功能
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+        
+        // 创建用户消息元素
+        const userMessage = createMessageElement('user', message);
+        chatContent.appendChild(userMessage);
+        
+        // 清空输入框
+        chatInput.value = '';
+        
+        // 滚动到底部
+        chatContent.scrollTop = chatContent.scrollHeight;
+        
+        // 模拟助手回复
+        setTimeout(() => {
+            const assistantReply = createMessageElement('assistant', '感谢您的提问，我正在为您查询相关信息...');
+            chatContent.appendChild(assistantReply);
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }, 1000);
+    }
+    
+    // 发送按钮点击事件
+    if (sendBtn) {
+        sendBtn.addEventListener('click', sendMessage);
+    }
+    
+    // 输入框回车事件
+    if (chatInput) {
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    }
+    
+    // 创建消息元素
+    function createMessageElement(type, content) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}`;
+        
+        const bubbleDiv = document.createElement('div');
+        bubbleDiv.className = 'message-bubble';
+        bubbleDiv.innerHTML = content;
+        
+        messageDiv.appendChild(bubbleDiv);
+        return messageDiv;
+    }
+    
+    // 会话列表切换
+    sessionItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // 移除所有活跃状态
+            sessionItems.forEach(i => i.classList.remove('active'));
+            // 添加当前活跃状态
+            this.classList.add('active');
+        });
+    });
+    
+    // 快捷按钮点击事件
+    quickBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const question = this.textContent;
+            chatInput.value = question;
+            // 可以自动发送，也可以让用户手动发送
+            // sendMessage();
+        });
+    });
+    
+    // 关联工具卡片点击事件
+    const cardBtns = document.querySelectorAll('.card-btn');
+    cardBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const action = this.textContent;
+            alert(`执行操作：${action}`);
+        });
+    });
+}
 
 // 登录页面初始化
 function initLoginPage() {
@@ -1451,7 +1635,7 @@ const marketingPlans = [
 ## 二、推荐航线方案
 **推荐航线：** 深圳盐田港 - 洛杉矶港
 **预计时效：** 14-16天
-**承运船公司：** 马士基航运
+**承运船公司：** 中远海运
 **服务优势：** 每周三班固定航班，准点率高达95%以上
 
 ## 三、价格方案
@@ -1496,7 +1680,7 @@ const marketingPlans = [
 ## 二、推荐航线方案
 **推荐航线：** 上海洋山港 - 汉堡港
 **预计时效：** 25-28天
-**承运船公司：** 地中海航运
+**承运船公司：** 中远海运
 **服务优势：** 固定航线，稳定船期，适合长期合作
 
 ## 三、价格方案
