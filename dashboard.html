@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知风智能体 - 竞争对手监测</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>知风智能体</h2>
+                <p>海运市场情报分析平台</p>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-item active" data-page="competitor" onclick="navigateTo('competitor')">
+                    <span>👥</span>
+                    <span>竞争对手监测</span>
+                </div>
+                <div class="nav-item" data-page="opportunity" onclick="navigateTo('opportunity')">
+                    <span>💡</span>
+                    <span>潜在商机挖掘</span>
+                </div>
+                <div class="nav-item" data-page="marketing" onclick="navigateTo('marketing')">
+                    <span>📝</span>
+                    <span>营销方案生成</span>
+                </div>
+                <div class="nav-item" data-page="system" onclick="navigateTo('system')">
+                    <span>⚙️</span>
+                    <span>系统管理</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 主内容区 -->
+        <div class="content">
+            <div class="content-header">
+                <div class="header-left">
+                    <h3>竞争对手监测</h3>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <div class="user-avatar">A</div>
+                        <span>管理员</span>
+                    </div>
+                    <div class="logout-btn" onclick="logout()">
+                        <span>🚪</span>
+                        <span>退出登录</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-body">
+                <!-- 动态时间轴 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">近期竞争对手重大事件</h4>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">2025-12-23</div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-header">
+                                    <h5>马士基宣布大幅下调亚洲-美西航线运价</h5>
+                                    <span class="tag challenge">挑战</span>
+                                </div>
+                                <p>马士基航运今日宣布，从2026年1月1日起，亚洲至美西航线的运价将下调15%-20%，以应对市场竞争压力。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2025-12-22</div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-header">
+                                    <h5>地中海航运新增3条亚洲-欧洲航线</h5>
+                                    <span class="tag challenge">挑战</span>
+                                </div>
+                                <p>地中海航运今日宣布，将于2026年1月新增3条亚洲至欧洲的直达航线，进一步提升运力。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2025-12-20</div>
+                            <div class="timeline-content">
+                                <div class="timeline-content-header">
+                                    <h5>达飞轮船与港口集团达成战略合作</h5>
+                                    <span class="tag neutral">中性</span>
+                                </div>
+                                <p>达飞轮船今日宣布与上海港集团达成战略合作，将共同投资建设自动化码头，提升运营效率。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 筛选条件和动态列表合并卡片 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">竞争对手动态</h4>
+                    </div>
+                    
+                    <!-- 筛选条件 -->
+                    <div class="filter-section">
+                        <form id="competitor-filter-form">
+                            <div class="filter-content">
+                                <div class="form-group">
+                                    <label for="competitor-select">竞争对手</label>
+                                    <select id="competitor-select">
+                                        <option value="">全部</option>
+                                        <option value="马士基">马士基</option>
+                                        <option value="地中海航运">地中海航运</option>
+                                        <option value="达飞轮船">达飞轮船</option>
+                                        <option value="长荣海运">长荣海运</option>
+                                        <option value="赫伯罗特">赫伯罗特</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="time-range">时间范围</label>
+                                    <select id="time-range">
+                                        <option value="">全部</option>
+                                        <option value="today">今天</option>
+                                        <option value="week">本周</option>
+                                        <option value="month">本月</option>
+                                        <option value="quarter">本季度</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dynamic-type">动态类型</label>
+                                    <select id="dynamic-type">
+                                        <option value="">全部</option>
+                                        <option value="运力投放">运力投放</option>
+                                        <option value="价格策略">价格策略</option>
+                                        <option value="服务升级">服务升级</option>
+                                        <option value="战略合作">战略合作</option>
+                                        <option value="新航线">新航线</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="emotion-type">情感标签</label>
+                                    <select id="emotion-type">
+                                        <option value="">全部</option>
+                                        <option value="挑战">挑战</option>
+                                        <option value="机遇">机遇</option>
+                                        <option value="中性">中性</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <div style="display: flex; gap: 10px;">
+                                        <button type="submit" class="btn btn-primary">筛选</button>
+                                        <button type="button" class="btn btn-secondary" onclick="resetFilters()">重置</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- 动态列表 -->
+                    <div class="table-section">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>动态时间</th>
+                                    <th>竞争对手</th>
+                                    <th>动态类型</th>
+                                    <th>内容概要</th>
+                                    <th>数据源</th>
+                                    <th>情感标签</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="competitor-dynamics-tbody">
+                                <!-- 数据将通过JavaScript动态生成 -->
+                            </tbody>
+                        </table>
+                        
+                        <!-- 分页 -->
+                        <div class="pagination">
+                            <button>上一页</button>
+                            <button class="active">1</button>
+                            <button>2</button>
+                            <button>3</button>
+                            <button>4</button>
+                            <button>5</button>
+                            <button>下一页</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

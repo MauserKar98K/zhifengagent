@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知风智能体 - 潜在商机挖掘</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>知风智能体</h2>
+                <p>海运市场情报分析平台</p>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-item" data-page="competitor" onclick="navigateTo('competitor')">
+                    <span>👥</span>
+                    <span>竞争对手监测</span>
+                </div>
+                <div class="nav-item active" data-page="opportunity" onclick="navigateTo('opportunity')">
+                    <span>💡</span>
+                    <span>潜在商机挖掘</span>
+                </div>
+                <div class="nav-item" data-page="marketing" onclick="navigateTo('marketing')">
+                    <span>📝</span>
+                    <span>营销方案生成</span>
+                </div>
+                <div class="nav-item" data-page="system" onclick="navigateTo('system')">
+                    <span>⚙️</span>
+                    <span>系统管理</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 主内容区 -->
+        <div class="content">
+            <div class="content-header">
+                <div class="header-left">
+                    <h3>潜在商机挖掘</h3>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <div class="user-avatar">A</div>
+                        <span>管理员</span>
+                    </div>
+                    <div class="logout-btn" onclick="logout()">
+                        <span>🚪</span>
+                        <span>退出登录</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-body">
+                <!-- 筛选条件和商机列表合并卡片 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">潜在商机列表</h4>
+                    </div>
+                    
+                    <!-- 筛选条件 -->
+                    <div class="filter-section">
+                        <form id="opportunity-filter-form">
+                            <div class="filter-content">
+                                <div class="form-group">
+                                    <label for="industry-select">行业分类</label>
+                                    <select id="industry-select">
+                                        <option value="">全部</option>
+                                        <option value="电子">电子行业</option>
+                                        <option value="汽车">汽车行业</option>
+                                        <option value="机械">机械行业</option>
+                                        <option value="纺织">纺织行业</option>
+                                        <option value="化工">化工行业</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="region-select">地区</label>
+                                    <select id="region-select">
+                                        <option value="">全部</option>
+                                        <option value="华东">华东</option>
+                                        <option value="华南">华南</option>
+                                        <option value="华北">华北</option>
+                                        <option value="华中">华中</option>
+                                        <option value="西南">西南</option>
+                                        <option value="西北">西北</option>
+                                        <option value="东北">东北</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <div style="display: flex; gap: 10px;">
+                                        <button type="submit" class="btn btn-primary">筛选</button>
+                                        <button type="button" class="btn btn-secondary" onclick="resetOpportunityFilters()">重置</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- 商机列表 -->
+                    <div class="table-section">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>发现时间</th>
+                                    <th>企业名称</th>
+                                    <th>行业</th>
+                                    <th>地区</th>
+                                    <th>商机类型</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="opportunity-list-tbody">
+                            </tbody>
+                        </table>
+                        
+                        <!-- 分页 -->
+                        <div class="pagination">
+                            <button>上一页</button>
+                            <button class="active">1</button>
+                            <button>2</button>
+                            <button>3</button>
+                            <button>4</button>
+                            <button>5</button>
+                            <button>下一页</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知风智能体 - 潜在商机详情</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>知风智能体</h2>
+                <p>海运市场情报分析平台</p>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-item" data-page="dashboard" onclick="navigateTo('dashboard')">
+                    <span>📊</span>
+                    <span>工作台</span>
+                </div>
+                <div class="nav-item" data-page="competitor" onclick="navigateTo('competitor')">
+                    <span>👥</span>
+                    <span>竞争对手监测</span>
+                </div>
+                <div class="nav-item active" data-page="opportunity" onclick="navigateTo('opportunity')">
+                    <span>💡</span>
+                    <span>潜在商机挖掘</span>
+                </div>
+                <div class="nav-item" data-page="marketing" onclick="navigateTo('marketing')">
+                    <span>📝</span>
+                    <span>营销方案生成</span>
+                </div>
+                <div class="nav-item" data-page="system" onclick="navigateTo('system')">
+                    <span>⚙️</span>
+                    <span>系统管理</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 主内容区 -->
+        <div class="content">
+            <div class="content-header">
+                <div class="header-left">
+                    <h3>潜在商机详情</h3>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <div class="user-avatar">A</div>
+                        <span>管理员</span>
+                    </div>
+                    <div class="logout-btn" onclick="logout()">
+                        <span>🚪</span>
+                        <span>退出登录</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-body">
+                <!-- 头部导航区 -->
+                <div class="detail-header">
+                    <div class="breadcrumb">
+                        <span><a href="opportunity.html">潜在商机挖掘</a></span>
+                        <span>></span>
+                        <span>商机详情</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="goBack()">
+                        <span>⬅️</span>
+                        <span>返回列表</span>
+                    </button>
+                </div>
+                
+                <!-- 基础信息面板 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">基础信息</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-label">发现时间</span>
+                                <span class="info-value" id="detail-time">2025-12-23 10:20</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">企业名称</span>
+                                <span class="info-value" id="detail-company">深圳电子科技有限公司</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">行业分类</span>
+                                <span class="info-value" id="detail-industry">电子行业</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">所在地区</span>
+                                <span class="info-value" id="detail-region">华南</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">商机类型</span>
+                                <span class="info-value" id="detail-type">新工厂投产</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">优先级</span>
+                                <span class="info-value" id="detail-priority">高</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">状态</span>
+                                <span class="info-value" id="detail-status">待跟进</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">数据来源</span>
+                                <span class="info-value" id="detail-source">某新能源汽车官网新闻</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">联系邮箱</span>
+                                <span class="info-value" id="detail-email">info@example.com, contact@example.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI推演分析面板 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">AI推演分析</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="insight-grid">
+                            <div class="insight-section">
+                                <h5>需求分析</h5>
+                                <div id="ai-demand-analysis" class="analysis-content">
+                                    该工厂主要生产电动汽车，预计核心零部件（如电池、芯片）需从日韩/欧洲进口，成品车可能出口至欧美。会产生稳定的集装箱海运需求，货类为精密仪器、汽车零部件和整车。
+                                </div>
+                            </div>
+                            <div class="insight-section">
+                                <h5>决策链推测</h5>
+                                <div id="ai-decision-chain" class="analysis-content">
+                                    潜在决策部门：采购部、物流部、计划部<br>
+                                    可能的关键联系人：采购经理、物流总监<br>
+                                    决策流程：调研供应商 → 比价 → 制定运输方案 → 签订合同
+                                </div>
+                            </div>
+                            <div class="insight-section">
+                                <h5>竞争分析</h5>
+                                <div id="ai-competition-analysis" class="analysis-content">
+                                    根据监测，竞争对手B近期在该区域有活跃的销售活动，已与当地两家汽车零部件企业建立合作关系。
+                                </div>
+                            </div>
+                            <div class="insight-section">
+                                <h5>初步建议</h5>
+                                <div id="ai-suggestion" class="analysis-content">
+                                    1. 重点关注工厂投产节点，提前1-2个月联系潜在客户<br>
+                                    2. 推荐公司亚洲-欧美精品航线及端到端物流解决方案<br>
+                                    3. 针对汽车零部件运输提供专业化服务方案<br>
+                                    4. 考虑为新客户提供首单优惠政策
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI邮件助手面板 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">AI邮件助手</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- 邮件抓取与生成 -->
+                        <div class="email-assistant-section">
+                            <div class="email-input-group">
+                                <label for="company-website">公司官网：</label>
+                                <input type="text" id="company-website" value="www.szet.com" placeholder="输入公司官网地址">
+                                <button class="btn btn-primary" onclick="crawlEmails()">抓取邮箱</button>
+                            </div>
+                            <div class="captured-emails">
+                                <label>联系邮箱：</label>
+                                <div id="captured-emails-list" class="email-list">
+                                    <!-- 抓取到的邮箱将动态显示 -->
+                                </div>
+                            </div>
+                            <div class="email-generation">
+                                <button class="btn btn-primary" onclick="generateEmail()">生成洽谈邮件</button>
+                            </div>
+                        </div>
+                        
+                        <!-- 邮件内容编辑器 -->
+                        <div class="email-editor-section">
+                            <div class="email-editor">
+                                <div class="email-header">
+                                    <div class="email-field">
+                                        <label>收件人：</label>
+                                        <input type="email" id="email-to" placeholder="选择或输入收件人邮箱">
+                                    </div>
+                                    <div class="email-field">
+                                        <label>主题：</label>
+                                        <input type="text" id="email-subject" placeholder="邮件主题">
+                                    </div>
+                                </div>
+                                <div class="email-body">
+                                    <label>邮件内容：</label>
+                                    <textarea id="email-content" rows="10" placeholder="邮件正文"></textarea>
+                                </div>
+                                <div class="email-actions">
+                                    <button class="btn btn-primary" onclick="sendEmail()">发送邮件</button>
+                                    <button class="btn btn-secondary" onclick="saveEmailTemplate()">保存模板</button>
+                                </div>
+                            </div>
+                            <div class="email-translation-section">
+                                <div class="translation-group">
+                                    <label for="target-language">翻译邮件：</label>
+                                    <select id="target-language" class="language-select">
+                                        <option value="">选择目标语言</option>
+                                        <option value="英语">英语</option>
+                                        <option value="日语">日语</option>
+                                        <option value="韩语">韩语</option>
+                                        <option value="西班牙语">西班牙语</option>
+                                        <option value="法语">法语</option>
+                                        <option value="德语">德语</option>
+                                        <option value="俄语">俄语</option>
+                                        <option value="阿拉伯语">阿拉伯语</option>
+                                        <option value="葡萄牙语">葡萄牙语</option>
+                                        <option value="意大利语">意大利语</option>
+                                        <option value="印尼语">印尼语</option>
+                                        <option value="越南语">越南语</option>
+                                        <option value="泰语">泰语</option>
+                                        <option value="马来语">马来语</option>
+                                        <option value="土耳其语">土耳其语</option>
+                                        <option value="印地语">印地语</option>
+                                        <option value="乌尔都语">乌尔都语</option>
+                                        <option value="波斯语">波斯语</option>
+                                        <option value="希伯来语">希伯来语</option>
+                                        <option value="波兰语">波兰语</option>
+                                        <option value="荷兰语">荷兰语</option>
+                                        <option value="瑞典语">瑞典语</option>
+                                        <option value="挪威语">挪威语</option>
+                                        <option value="丹麦语">丹麦语</option>
+                                        <option value="芬兰语">芬兰语</option>
+                                        <option value="希腊语">希腊语</option>
+                                        <option value="捷克语">捷克语</option>
+                                        <option value="匈牙利语">匈牙利语</option>
+                                        <option value="罗马尼亚语">罗马尼亚语</option>
+                                        <option value="保加利亚语">保加利亚语</option>
+                                        <option value="塞尔维亚语">塞尔维亚语</option>
+                                        <option value="克罗地亚语">克罗地亚语</option>
+                                        <option value="斯洛伐克语">斯洛伐克语</option>
+                                        <option value="斯洛文尼亚语">斯洛文尼亚语</option>
+                                        <option value="立陶宛语">立陶宛语</option>
+                                        <option value="拉脱维亚语">拉脱维亚语</option>
+                                        <option value="爱沙尼亚语">爱沙尼亚语</option>
+                                        <option value="乌克兰语">乌克兰语</option>
+                                        <option value="白俄罗斯语">白俄罗斯语</option>
+                                        <option value="蒙古语">蒙古语</option>
+                                        <option value="哈萨克语">哈萨克语</option>
+                                        <option value="乌兹别克语">乌兹别克语</option>
+                                        <option value="塔吉克语">塔吉克语</option>
+                                        <option value="土库曼语">土库曼语</option>
+                                        <option value="阿塞拜疆语">阿塞拜疆语</option>
+                                        <option value="格鲁吉亚语">格鲁吉亚语</option>
+                                        <option value="亚美尼亚语">亚美尼亚语</option>
+                                        <option value="阿尔巴尼亚语">阿尔巴尼亚语</option>
+                                        <option value="马其顿语">马其顿语</option>
+                                        <option value="阿尔及利亚阿拉伯语">阿尔及利亚阿拉伯语</option>
+                                        <option value="埃及阿拉伯语">埃及阿拉伯语</option>
+                                        <option value="摩洛哥阿拉伯语">摩洛哥阿拉伯语</option>
+                                        <option value="突尼斯阿拉伯语">突尼斯阿拉伯语</option>
+                                        <option value="利比亚阿拉伯语">利比亚阿拉伯语</option>
+                                        <option value="苏丹阿拉伯语">苏丹阿拉伯语</option>
+                                        <option value="尼日利亚语">尼日利亚语</option>
+                                        <option value="南非荷兰语">南非荷兰语</option>
+                                        <option value="斯瓦希里语">斯瓦希里语</option>
+                                        <option value="阿姆哈拉语">阿姆哈拉语</option>
+                                        <option value="奥罗莫语">奥罗莫语</option>
+                                        <option value="豪萨语">豪萨语</option>
+                                        <option value="约鲁巴语">约鲁巴语</option>
+                                        <option value="伊博语">伊博语</option>
+                                        <option value="祖鲁语">祖鲁语</option>
+                                        <option value="科萨语">科萨语</option>
+                                        <option value="马达加斯加语">马达加斯加语</option>
+                                        <option value="埃塞俄比亚语">埃塞俄比亚语</option>
+                                        <option value="肯尼亚斯瓦希里语">肯尼亚斯瓦希里语</option>
+                                        <option value="安哥拉葡萄牙语">安哥拉葡萄牙语</option>
+                                        <option value="巴西葡萄牙语">巴西葡萄牙语</option>
+                                        <option value="墨西哥西班牙语">墨西哥西班牙语</option>
+                                        <option value="阿根廷西班牙语">阿根廷西班牙语</option>
+                                        <option value="哥伦比亚西班牙语">哥伦比亚西班牙语</option>
+                                        <option value="秘鲁西班牙语">秘鲁西班牙语</option>
+                                        <option value="委内瑞拉西班牙语">委内瑞拉西班牙语</option>
+                                        <option value="智利西班牙语">智利西班牙语</option>
+                                        <option value="厄瓜多尔西班牙语">厄瓜多尔西班牙语</option>
+                                        <option value="古巴西班牙语">古巴西班牙语</option>
+                                        <option value="多米尼加西班牙语">多米尼加西班牙语</option>
+                                        <option value="波多黎各西班牙语">波多黎各西班牙语</option>
+                                        <option value="乌拉圭西班牙语">乌拉圭西班牙语</option>
+                                        <option value="巴拉圭西班牙语">巴拉圭西班牙语</option>
+                                        <option value="玻利维亚西班牙语">玻利维亚西班牙语</option>
+                                        <option value="哥斯达黎加西班牙语">哥斯达黎加西班牙语</option>
+                                        <option value="巴拿马西班牙语">巴拿马西班牙语</option>
+                                        <option value="尼加拉瓜西班牙语">尼加拉瓜西班牙语</option>
+                                        <option value="萨尔瓦多西班牙语">萨尔瓦多西班牙语</option>
+                                        <option value="洪都拉斯西班牙语">洪都拉斯西班牙语</option>
+                                        <option value="危地马拉西班牙语">危地马拉西班牙语</option>
+                                        <option value="伯利兹西班牙语">伯利兹西班牙语</option>
+                                        <option value="海地克里奥尔语">海地克里奥尔语</option>
+                                        <option value="牙买加克里奥尔语">牙买加克里奥尔语</option>
+                                        <option value="特立尼达和多巴哥英语">特立尼达和多巴哥英语</option>
+                                    </select>
+                                    <button class="btn btn-primary translation-btn" onclick="translateEmail()">开始翻译</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 邮件触达记录 -->
+                        <div class="email-reach-record">
+                            <h5>邮件触达记录</h5>
+                            <div id="email-reach-list" class="reach-list">
+                                <!-- 邮件触达记录将动态显示 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 原始内容区 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">原始内容</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="original-content">
+                            <p id="detail-content">
+                                该公司在合肥新建的新能源汽车工厂预计明年3月投产，年产能将达到20万辆，主要生产高端电动汽车。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 相关商机推荐 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">相关商机推荐</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="related-dynamics" id="related-opportunities">
+                            <!-- 相关商机将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

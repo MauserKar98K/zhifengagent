@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知风智能体 - 系统管理</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>知风智能体</h2>
+                <p>海运市场情报分析平台</p>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-item" data-page="competitor" onclick="navigateTo('competitor')">
+                    <span>👥</span>
+                    <span>竞争对手监测</span>
+                </div>
+                <div class="nav-item" data-page="opportunity" onclick="navigateTo('opportunity')">
+                    <span>💡</span>
+                    <span>潜在商机挖掘</span>
+                </div>
+                <div class="nav-item" data-page="marketing" onclick="navigateTo('marketing')">
+                    <span>📝</span>
+                    <span>营销方案生成</span>
+                </div>
+                <div class="nav-item active" data-page="system" onclick="navigateTo('system')">
+                    <span>⚙️</span>
+                    <span>系统管理</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 主内容区 -->
+        <div class="content">
+            <div class="content-header">
+                <div class="header-left">
+                    <h3>系统管理</h3>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <div class="user-avatar">A</div>
+                        <span>管理员</span>
+                    </div>
+                    <div class="logout-btn" onclick="logout()">
+                        <span>🚪</span>
+                        <span>退出登录</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-body">
+                <!-- 管理菜单 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">管理功能</h4>
+                    </div>
+                    <div class="system-menu">
+                        <div class="system-menu-item active" data-tab="user">
+                            <span>👤</span>
+                            <span>用户管理</span>
+                        </div>
+                        <div class="system-menu-item" data-tab="role">
+                            <span>🎭</span>
+                            <span>角色管理</span>
+                        </div>
+                        <div class="system-menu-item" data-tab="task">
+                            <span>⏰</span>
+                            <span>任务管理</span>
+                        </div>
+                        <div class="system-menu-item" data-tab="data">
+                            <span>📊</span>
+                            <span>数据源管理</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 用户管理 -->
+                <div class="card">
+                    <div class="card-header">
+                    <div class="header-left">
+                        <h4 class="card-title">用户管理</h4>
+                    </div>
+                    <div class="header-right">
+                        <button class="btn btn-primary" id="add-user-btn">新增用户</button>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>用户名</th>
+                            <th>真实姓名</th>
+                            <th>部门</th>
+                            <th>角色</th>
+                            <th>状态</th>
+                            <th>创建时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-list-tbody">
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 添加用户弹窗 -->
+    <div id="add-user-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>新增用户</h4>
+                <span class="close close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-user-form">
+                    <div class="form-group">
+                        <label for="new-username">用户名</label>
+                        <input type="text" id="new-username" placeholder="请输入用户名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-realname">真实姓名</label>
+                        <input type="text" id="new-realname" placeholder="请输入真实姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-department">部门</label>
+                        <select id="new-department" required>
+                            <option value="">请选择部门</option>
+                            <option value="系统管理部">系统管理部</option>
+                            <option value="营销部">营销部</option>
+                            <option value="市场部">市场部</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-role">角色</label>
+                        <select id="new-role" required>
+                            <option value="">请选择角色</option>
+                            <option value="超级管理员">超级管理员</option>
+                            <option value="营销经理">营销经理</option>
+                            <option value="营销专员">营销专员</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">初始密码</label>
+                        <input type="password" id="new-password" placeholder="请输入初始密码" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="hideAddUserModal()">取消</button>
+                <button class="btn btn-primary" type="submit" form="add-user-form">保存</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
