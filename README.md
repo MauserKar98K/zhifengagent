@@ -33,13 +33,18 @@ Gitee Pages是码云提供的免费静态网站托管服务，国内访问速度
    ```
 
 4. **启用Gitee Pages**
-   - 进入Gitee仓库页面
-   - 点击"服务" → "Gitee Pages"
-   - 配置选项：
-     - 选择分支：`main`
+   - **方法一（推荐）：直接访问配置URL**
+     - 在浏览器中输入：`https://gitee.com/mauserkar98k/zhifeng/pages`
+     - 这将直接打开您仓库的Gitee Pages配置页面
+   - **方法二：通过菜单访问**
+     - 进入Gitee仓库页面
+     - 点击"服务" → "Gitee Pages"
+     - 如果在"服务"菜单中找不到，可以尝试点击"管理" → 查看是否有"Pages服务"
+   - **配置选项**：
+     - 选择分支：`master`（注意：您的远程分支是master，不是main）
      - 选择目录：`/(根目录)`
    - 点击"启动"
-   - 等待部署完成，获取访问URL（如：`https://你的用户名.gitee.io/competitor-monitoring/`）
+   - 等待部署完成，获取访问URL（如：`https://mauserkar98k.gitee.io/zhifeng/`）
 
 ### 方案二：阿里云OSS静态网站托管
 阿里云OSS（对象存储服务）提供静态网站托管功能，访问速度快，可靠性高。
